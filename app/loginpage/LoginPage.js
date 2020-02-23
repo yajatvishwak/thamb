@@ -1,15 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   StyleSheet,
   View,
   Text,
   TextInput,
-  TouchableOpacity,
-  StatusBar
+  TouchableOpacity
 } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
 
-function LoginPage(props) {
+function LoginPage({ navigation }) {
   return (
     <View style={styles.container}>
       <Icon name="map" style={styles.icon}></Icon>
@@ -28,7 +27,10 @@ function LoginPage(props) {
         selectionColor="rgba(0,0,255,1)"
         style={styles.teamPassword}
       ></TextInput>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.replace("HomePage")}
+      >
         <Text style={styles.letsHunt}>Let&#39;s Hunt</Text>
       </TouchableOpacity>
       <Text style={styles.thambV0}>THAMB.V0</Text>
