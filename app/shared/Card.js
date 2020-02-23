@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text } from "react-native";
+import Button from "./Button";
 
 function Card(props) {
   return (
@@ -11,6 +12,10 @@ function Card(props) {
       <View style={styles.body2}>
         <Text style={styles.bodyText}>{props.body}</Text>
       </View>
+      {props.hidden && null}
+      {!props.hidden && (
+        <Button title="Submit Answer" onPress={props.onPress} />
+      )}
     </View>
   );
 }

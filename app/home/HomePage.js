@@ -1,18 +1,18 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import Card from "../shared/Card";
 import QrButton from "../shared/QrButton";
+import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 let initialClues = [
   {
-    key: 1,
     title: "Random Title",
     subtitle: "#Clue1",
     body:
       "Some random puzzle srthosgnskgishgkomgogknedrgjkodnofgdklrgdgfkndogkdfbsldfgsdfldfbxdfkdfgdfnhsdhgkdfih"
   },
   {
-    key: 2,
     title: "Random Title",
     subtitle: "#Clue1",
     body:
@@ -22,15 +22,24 @@ let initialClues = [
 
 function HomePage(props) {
   const [clues, setClues] = useState(initialClues);
-
-  const onScan = data => {
-    setClues(JSON.parse(data));
+  const route = useRoute();
+  const navigation = useNavigation();
+  const data = route.params; // scanned data from user, should add to clues
+  console.log(data);
+  console.log(clues);
+  const onPressHandler = data => {
+    navigation.navigate("SubmitAnswer", { data });
   };
 
   const foundClues = clues.map(ele => (
-    <Card title={ele.title} subtitle={ele.subtitle} body={ele.body} />
+    <Card
+      title={ele.title}
+      subtitle={ele.subtitle}
+      body={ele.body}
+      onPress={() => onPressHandler(ele)}
+    />
   ));
-  //console.log(foundClues);
+
   return (
     <View style={styles.background}>
       <View style={styles.container}>
