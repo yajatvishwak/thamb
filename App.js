@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 import LoginPage from "./app/loginpage/LoginPage";
 import HomePage from "./app/home/HomePage";
+import QrScanner from "./app/shared/QrScanner";
 
 //navigation
 import "react-native-gesture-handler";
@@ -21,6 +22,7 @@ export default function App() {
       >
         <Stack.Screen name="Login" component={LoginPage} />
         <Stack.Screen name="HomePage" component={HomePage} />
+        <Stack.Screen name="Scanner" component={QrScanner} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -38,7 +38,7 @@ function LoginPage({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ 
   container: {
     backgroundColor: "black",
     flex: 1,

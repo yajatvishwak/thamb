@@ -5,17 +5,11 @@ function Card(props) {
   return (
     <View style={[styles.container, props.style]}>
       <View style={styles.bodyContent}>
-        <Text style={styles.titleStyle}>Title goes here</Text>
-        <Text style={styles.subtitleStyle}>Subtitle here</Text>
+        <Text style={styles.titleStyle}>{props.title}</Text>
+        <Text style={styles.subtitleStyle}>{props.subtitle}</Text>
       </View>
       <View style={styles.body2}>
-        <Text style={styles.bodyText}>
-          BuilderX is a screen design tool which codes React Native for you
-          which design without boundaries, the code is generated simultaneously.
-          Save your designed components as symbol and then simply add it to your
-          design next time.Live preview works on real device. Shout out to the
-          Expo team to make it happen.
-        </Text>
+        <Text style={styles.bodyText}>{props.body}</Text>
       </View>
     </View>
   );

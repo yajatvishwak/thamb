@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 function QrButton(props) {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={[styles.container, props.style]}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        navigation.navigate("Scanner");
+      }}
+    >
       <Text style={styles.caption}>QR CODE SCANNER</Text>
     </TouchableOpacity>
   );
@@ -26,7 +33,10 @@ const styles = StyleSheet.create({
     },
     shadowColor: "#000",
     shadowOpacity: 0.35,
-    shadowRadius: 5
+    shadowRadius: 5,
+    alignSelf: "stretch",
+    padding: 50,
+    marginBottom: 50
   },
   caption: {
     color: "#fff",
