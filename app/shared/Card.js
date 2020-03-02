@@ -13,9 +13,7 @@ function Card(props) {
         <Text style={styles.bodyText}>{props.body}</Text>
       </View>
       {props.hidden && null}
-      {!props.hidden && (
-        <Button title="Submit Answer" onPress={props.onPress} />
-      )}
+      {!props.hidden && <Button title="Lodge Answer" onPress={props.onPress} />}
     </View>
   );
 }

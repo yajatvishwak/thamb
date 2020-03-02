@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -8,27 +8,36 @@ import {
   Text
 } from "react-native";
 import Card from "../shared/Card";
-import { useRoute } from "@react-navigation/native";
 
 function ClueView(props) {
-  const route = useRoute();
+  const [enteredText, setenteredText] = useState(null);
+
+  const handlePress = () => {
+    props.submitAnswer({
+      clueCode: props.subtitle,
+      response: enteredText
+    });
+  };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.container}>
         <Card
           hidden
-          title={route.params.data.title}
-          subtitle={route.params.data.subtitle}
-          body={route.params.data.body}
+          title={props.title}
+          subtitle={props.subtitle}
+          body={props.body}
         />
         <TextInput
-          placeholder="Start Typing here..."
-          maxLength={1500}
-          multiline
-          numberOfLines={50}
+          placeholder="Your Guessed Character here..."
+          maxLength={1}
           style={styles.textInput}
+          onChangeText={text => setenteredText(text)}
         ></TextInput>
-        <TouchableOpacity style={styles.button} placeholder="Submit">
+        <TouchableOpacity
+          style={styles.button}
+          placeholder="Submit"
+          onPress={handlePress}
+        >
           <Text style={styles.submitAnswer}>Submit Answer</Text>
         </TouchableOpacity>
       </View>
